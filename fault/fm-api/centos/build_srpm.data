@@ -1,0 +1,2 @@
+COPY_LIST="$CGCS_BASE/downloads/fault.tar.gz"
+TIS_PATCH_VER=13
