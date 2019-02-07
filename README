@@ -1,0 +1,8 @@
+
+This is a sample implementation of the StarlingX Flock Source Reorg.
+
+Currently this will only build fault/fm-api and fault/fm-common package,
+the rest are just templated as an example layout. 
+
+It does currently require that the downloads directory requires having a
+tarball called fm-api-1.0.tar.gz to build the Source RPM from.
