@@ -1,0 +1,6 @@
+fm-common (0.0-1) UNRELEASED; urgency=low
+
+  * Initial release. Closes: #nnnn
+    <nnnn is the bug number of your ITP>
+
+ -- vmrod <vmrod@localhost>  Wed, 20 Feb 2019 05:05:30 -0600
