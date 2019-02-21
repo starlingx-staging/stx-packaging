@@ -1,0 +1,6 @@
+fm-common (0.0-1) UNRELEASED; urgency=low
+
+  * Initial release. Closes: #nnnn
+    <nnnn is the bug number of your ITP>
+
+ -- Marcela <marce@mail.com>  Thu, 21 Feb 2019 16:58:16 +0000

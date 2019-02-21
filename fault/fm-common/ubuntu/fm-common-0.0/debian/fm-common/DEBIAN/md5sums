@@ -1,0 +1,13 @@
+f63398c7f05fb597d066a0befce24a79  opt/deploy/cgcs_doc/fmAlarm.h
+af26bff25810f4aa967d73b4b1f9f72a  usr/local/bin/fmClientCli
+bc4b907ae9202bd27b5c2949fff73f16  usr/local/bin/fm_db_sync_event_suppression.py
+9f5e085deabe2aa94d5ce418ae865bec  usr/local/include/fmAPI.h
+f63398c7f05fb597d066a0befce24a79  usr/local/include/fmAlarm.h
+eb1c4bb61cee6ca181c3113d308ac99d  usr/local/include/fmConfig.h
+1b2515396e66f3496317cec182c8d79e  usr/local/include/fmDbAPI.h
+7ebf76882c7754df750a2806cc47213d  usr/local/include/fmLog.h
+d9e6cb50ec707848ac9352be53da4a1a  usr/local/include/fmThread.h
+af78562fb905df2e41d1dffa96944e5b  usr/local/lib/libfmcommon.so.1.0
+2fc2788b9b1c427888bd28e3caa32129  usr/share/doc/fm-common/README.Debian
+8e01dedca26984cb86f979e412f06f4d  usr/share/doc/fm-common/changelog.Debian.gz
+371e547b3f92ee6952652aa1698b363e  usr/share/doc/fm-common/copyright
