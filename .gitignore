@@ -1,0 +1,6 @@
+autodeb/
+*.tar.gz
+*.tar.xz
+*.dsc
+*.deb
+*.changes
