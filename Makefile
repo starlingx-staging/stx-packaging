@@ -1,4 +1,4 @@
-PKG ?= "fault/fm-common"
+PKG ?= "x.stx-fault/fm-common"
 DISTRO?= "ubuntu"
 
 all:
@@ -14,3 +14,5 @@ newpackage:
 	@echo "Building new package $(PKG)"
 clean:
 	cd $(PKG)/$(DISTRO) && make clean
+distclean:
+	rm -rf x.stx-fault/
