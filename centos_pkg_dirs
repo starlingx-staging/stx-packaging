@@ -1,8 +1,0 @@
-fault/fm-api
-fault/fm-common
-fault/fm-mgr
-fault/fm-doc
-fault/fm-rest-api
-fault/python-fmclient
-fault/snmp-ext
-fault/snmp-audittrail
