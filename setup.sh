@@ -13,4 +13,7 @@ if [ ! -d "x.stx-fault" ] ; then
     git clone -b poc_ubuntu_build --depth=1 https://github.com/VictorRodriguez/x.stx-fault.git
 fi
 
+if [ ! -d "x.stx-fault" ] ; then
+    git clone --depth=1 https://github.com/VictorRodriguez/linuxbuilder.git
+fi
 echo "Set up complete"
