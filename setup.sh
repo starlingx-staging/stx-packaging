@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+cp configs/pbuilderrc ~/.pbuilderrc
+sudo cp configs/D70results /var/cache/pbuilder/hook.d/
+
 if [ ! -d "autodeb" ] ; then
     git clone --depth=1 https://github.com/VictorRodriguez/autodeb.git
 fi
