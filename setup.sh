@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+sudo mkdir -p /usr/local/mydebs/
+sudo mkdir -p /var/cache/pbuilder/hook.d/
+
 cp configs/pbuilderrc ~/.pbuilderrc
 sudo cp configs/D70results /var/cache/pbuilder/hook.d/
 
