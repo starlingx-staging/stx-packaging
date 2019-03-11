@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo apt-get install debmake pbuilder
 sudo mkdir -p /usr/local/mydebs/
 sudo mkdir -p /var/cache/pbuilder/hook.d/
 
