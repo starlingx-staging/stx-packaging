@@ -13,7 +13,7 @@ iso:
 		echo "Download image with";\
 		echo "curl -O http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso";\
 	elif [ ! -f linuxbuilder/$(ISO_TEMPLATE) ]; then \
-        cp ubuntu-16.04.6-server-amd64.iso linuxbuilder/; \
+        cp $(ISO_TEMPLATE) linuxbuilder/; \
 	else\
 		echo "Ready to build";\
 		cp -rf /usr/local/mydebs/*.deb linuxbuilder/DEBS/;\
