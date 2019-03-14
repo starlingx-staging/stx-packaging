@@ -153,6 +153,13 @@ Porting of functional Starling X patches located at:
 * [0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch)
 [0004-StarlingX-Kernel-Threads-iSCSI.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0004-StarlingX-Kernel-Threads-iSCSI.patch)
 
+In order to insert the patches to the kernel just copy them into this directory: 
+
+```
+stx-packaging/upstream_pkgs/linux-source-4.15.0/linux-4.15.0/debian/patches
+```
+And put a series file that indicates the order of applying
+
 ## Building and image (WIP as POC state now)
 
 For now we are using
