@@ -5,15 +5,12 @@ ISO_TEMPLATE ?= ""
 
 all:
 	@echo "Check all the options to build"
-image:
-	@echo "Creating image .img to boot and test"
 iso:
 	@ echo "Creating image .iso to boot and test"
 	cp $(ISO_TEMPLATE) linuxbuilder/
 	cp -rf /usr/local/mydebs/*.deb linuxbuilder/DEBS/
 	cd linuxbuilder/ && make iso-ubuntu IMAGE=$(ISO_TEMPLATE)
 	mv linuxbuilder/ubuntu.iso .
-
 package:
 	@echo "Building package $(PKG) for $(DISTRO)"
 	cd $(PKG)/$(DISTRO) && make
@@ -28,8 +25,8 @@ clean_upstream_pkg:
 	cd upstream_pkgs/$(PKG) && make clean
 distclean_upstream_pkg:
 	sudo rm -rf upstream_pkgs/$(PKG)
-newpackage:
-	@echo "Building new package $(PKG)"
+testbuild: package
+	if [ $$? -eq 0 ] ; then echo "Test Build: OK !"; fi
 clean:
 	cd $(PKG)/$(DISTRO) && make clean
 	rm -rf ubuntu.iso
