@@ -26,7 +26,7 @@ clean_upstream_pkg:
 distclean_upstream_pkg:
 	sudo rm -rf upstream_pkgs/$(PKG)
 testbuild: package
-	if [ $$? -eq 0 ] ; then echo "Test Build: OK !"; fi
+	@ if [ $$? -eq 0 ] ; then echo "Test Build: OK !"; fi
 clean:
 	cd $(PKG)/$(DISTRO) && make clean
 	rm -rf ubuntu.iso
