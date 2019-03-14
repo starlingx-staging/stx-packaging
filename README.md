@@ -113,13 +113,13 @@ make package PKG=x.stx-upstream/openstack/python-horizon/ DISTRO=ubuntu
 ### Building an upstream package (bc and kernel)
 
 ```
-	make upstream_pkg PKG=bc
+make upstream_pkg PKG=bc
 ```
 
 This generates a directory:
 
 ```
-	upstream_pkgs/bc/
+upstream_pkgs/bc/
 ```
 
 With a generic Makefile to reuse if you want to add personal patches to the
@@ -131,13 +131,13 @@ upstream package before adding it to:
 Clean (but not erase your patches) with:
 
 ```
-	make clean_upstream_pkg PKG=bc
+make clean_upstream_pkg PKG=bc
 ```
 
 Distclean completely with:
 
 ```
-	make distclean_upstream_pkg PKG=bc
+make distclean_upstream_pkg PKG=bc
 ```
 
 Another example more useful than bc calculator is:
@@ -153,12 +153,59 @@ Porting of functional Starling X patches located at:
 [0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch)
 [0004-StarlingX-Kernel-Threads-iSCSI.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0004-StarlingX-Kernel-Threads-iSCSI.patch)
 
+## Building and image (WIP as POC state now)
+
+For now we are using
+[linuxbuilder](https://github.com/VictorRodriguez/linuxbuilder) script to test
+our package created on an upstream ubuntu image. However it has a lot of
+limitations and we are on the transition to [live
+build](http://complete.sisudoc.org/manual/html/live-manual/installation.ro.html#installing-live-build)
+tool.
+
+In the meantime to test that your DEB file coudl be installed on an Ubuntu
+image you can follow the next steps:
+
+Check that only one DEB that does not require runtime dependencies  exist on
+/usr/local/mydebs/
+```
+wget http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso
+$ make iso ISO_TEMPLATE=ubuntu-16.04.6-server-amd64.iso
+```
+Check the StarlingX Ubuntu based ISO image has been created:
+
+```
+user@workstation:~/starlingx/stx-packaging$ ls ubuntu.iso
+ubuntu.iso
+```
+
+### Virtual Machine Setup
+
+Create a QEMU disk:
+```
+user@workstation:~/starlingx/stx-packaging$ qemu-img create disk.img +30G
+```
+
+Launch the generated StarlingX based Ubuntu image, select the following options:
+
+* Language: English
+* Installation Options: Install Custom Ubuntu Server
+
+```
+user@workstation:~/starlingx/stx-packaging$ qemu-system-x86_64 -enable-kvm -machine accel=kvm -hda disk.img -boot d -cdrom ubuntu.iso -m 22640
+```
+
+Once StarlingX based Ubuntu image has been installed, remove the ISO file and launch again the virtual machine:
+
+```
+user@workstation:~/starlingx/stx-packaging$ qemu-system-x86_64 -enable-kvm -machine accel=kvm -hda disk.img -m 22640
+```
+
 ## Sanity Testscases
 
 This repo has its own sanity test to check that everything works:
 
 ```
-	make testbuild
+make testbuild
 ```
 
 ## Deployment
