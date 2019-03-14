@@ -173,11 +173,23 @@ In the meantime to test that your DEB file coudl be installed on an Ubuntu
 image you can follow the next steps:
 
 Check that only one DEB that does not require runtime dependencies  exist on
+local DEBs mirror:
+```
 /usr/local/mydebs/
 ```
+
+Then we can download the Ubuntu image we will use as template
+(for now linuxbuilder only works with this version of ubuntu, since is a POC):
+```
 wget http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso
+```
+
+Then we can make the image:
+
+```
 $ make iso ISO_TEMPLATE=ubuntu-16.04.6-server-amd64.iso
 ```
+
 Check the StarlingX Ubuntu based ISO image has been created:
 
 ```
@@ -215,10 +227,13 @@ This repo has its own sanity test to check that everything works:
 make testbuild
 ```
 
-## Deployment
+## Video Tutorials
 
-Add additional notes about how to deploy this on a live system
+TODO
 
+## Architecture
+
+Architecture slides and diagrams at this [google presentation](https://drive.google.com/open?id=1ck7vGH50AIAjUx9GNrIGtowG5qg7OYUBNdJyY-5ZvDc)
 ## Built With
 
 * [pbuilder](https://wiki.ubuntu.com/PbuilderHowto) - allows users to setup a
@@ -243,4 +258,4 @@ This project is licensed under the Apache License - see the [LICENSE.md](LICENSE
 
 ## Acknowledgments
 
-
+STX community for great feedback during the conseption of this POC
