@@ -216,7 +216,7 @@ Add additional notes about how to deploy this on a live system
 
 * [pbuilder](https://wiki.ubuntu.com/PbuilderHowto) - allows users to setup a
 chroot environment for building Ubuntu packages *
-[debmake](https://www.debian.org/doc/manuals/debmake-doc/apa.en.html) - program
+* [debmake](https://www.debian.org/doc/manuals/debmake-doc/apa.en.html) - program
 to make a Debian source package
 
 
