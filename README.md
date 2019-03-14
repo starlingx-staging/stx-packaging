@@ -226,7 +226,9 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **VictorRodriguez** - *Initial work* - [VictorRodriguez](https://github.com/VictorRodriguez)
+]* **VictorRodriguez** - *Initial work* - [VictorRodriguez](https://github.com/VictorRodriguez)
+* **Marcela Rosales** *Initial work* - [marcelarosalesj](https://github.com/marcelarosalesj)
+* **Abraham Arce** *Initial work* - [xe1gyq](https://github.com/xe1gyq)
 
 ## License
 
