@@ -36,11 +36,8 @@ fi
 
 # clone source code repos on specific branches
 filename='repos'
-while read line; do
-	GIT_REPO=$( echo $line | cut -d',' -f1)
-	BRANCH=$( echo $line | cut -d',' -f2 )
-	DIR=$( echo $GIT_REPO | cut -d '/' -f5 | cut -d '.' -f1-2)
-	echo $DIR
+while IFS=, read GIT_REPO BRANCH; do
+	DIR=$(basename $GIT_REPO .git)
 	if [ ! -z $DIR ];then
 		if [ ! -d "$DIR" ] ; then
 			git clone -b $BRANCH --depth=1 $GIT_REPO
