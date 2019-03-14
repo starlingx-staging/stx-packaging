@@ -57,7 +57,6 @@ https://git.starlingx.io/stx-config,master
 
 Once we have clone the proper repository where the flock service is hosted, we can build as:
 
-
 ```
 make package PKG=x.stx-fault/fm-common DISTRO=ubuntu
 ```
@@ -65,10 +64,96 @@ make package PKG=x.stx-fault/fm-common DISTRO=ubuntu
 	* PKG=path to the directory where our fm-common project lives
 	* DISTRO= ubuntu | centos | suse ( for now only works for ubuntu )
 
-#### Set up git repository that host the source and build scripts
+Another example could be fm-mgr:
 
+```
+make package PKG=x.stx-fault/fm-mgr DISTRO=ubuntu
+```
 
-## Running the tests
+One difference here is that fm-mgr depends on build time of fm-common that we
+previusly build, How to add a local build dependency to our build system in
+chroot , in this case is as simple as eddit the file:
+
+```
+$ cat x.stx-fault/fm-mgr/ubuntu/build_deps
+fm-common
+```
+
+The Makefile located in : x.stx-fault/fm-mgr/ubuntu/Makefile will build first
+fm-common in case we forgot to build it
+
+After that it will copy the .deb generated into /usr/local/mydebs/ that is our
+local mirror / mount point for pbuilder tool to search local build dependencies
+
+### Building a package tunned by Starling X ( Horizon for example )
+
+Following the same approach from the section "Set up git repository that host
+the source and build scripts" from above our repo file should look like:
+
+```
+$ cat repos
+https://github.com/VictorRodriguez/x.stx-upstream.git,master
+```
+
+Once we have clone the repo we can see that inside there is a Makefile with the
+proper patches and build instructions
+
+```
+~/stx-packaging/x.stx-upstream/openstack/python-horizon/ubuntu
+Makefile
+```
+
+We could even move to this directory and type make or from our root repo
+directory build as ussual:
+
+```
+make package PKG=x.stx-upstream/openstack/python-horizon/ DISTRO=ubuntu
+```
+
+### Building an upstream package (bc and kernel)
+
+```
+	make upstream_pkg PKG=bc
+```
+
+This generates a directory:
+
+```
+	upstream_pkgs/bc/
+```
+
+With a generic Makefile to reuse if you want to add personal patches to the
+upstream package before adding it to:
+
+* stx-integ
+* stx-upstream
+
+Clean (but not erase your patches) with:
+
+```
+	make clean_upstream_pkg PKG=bc
+```
+
+Distclean completely with:
+
+```
+	make distclean_upstream_pkg PKG=bc
+```
+
+Another example more useful than bc calculator is:
+
+```
+make upstream_pkg PKG=linux-source-4.15.0
+```
+
+Porting of functional Starling X patches located at:
+
+[0001-StarlingX-Death-of-Arbitrary-Process-Notification.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0001-StarlingX-Death-of-Arbitrary-Process-Notification.patch)
+[0002-StarlingX-Kernel-Threads-Compute-CPU-Affinity.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0002-StarlingX-Kernel-Threads-Compute-CPU-Affinity.patch)
+[0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch)
+[0004-StarlingX-Kernel-Threads-iSCSI.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0004-StarlingX-Kernel-Threads-iSCSI.patch)
+
+## Sanity Testscases
 
 This repo has its own sanity test to check that everything works:
 
@@ -82,14 +167,15 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [pbuilder](https://wiki.ubuntu.com/PbuilderHowto) - allows users to setup a
+chroot environment for building Ubuntu packages *
+[debmake](https://www.debian.org/doc/manuals/debmake-doc/apa.en.html) - program
+to make a Debian source package
 
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
