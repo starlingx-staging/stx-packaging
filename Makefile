@@ -22,11 +22,10 @@ upstream_pkg:
 	- mkdir -p upstream_pkgs/$(PKG)
 	- mkdir -p upstream_pkgs/$(PKG)/results
 	cd upstream_pkgs/$(PKG) && sudo apt-get source $(PKG)
-	sudo rm -rf /var/cache/pbuilder/result/*.deb
-	cd upstream_pkgs/$(PKG) && sudo pbuilder build --override-config *.dsc
-	- sudo cp -rf /var/cache/pbuilder/result/*.deb upstream_pkgs/$(PKG)/results/
-	- sudo cp upstream_pkgs/$(PKG)/results/*.deb /usr/local/mydebs/
-
+	cp configs/generic-Makefile upstream_pkgs/$(PKG)/Makefile
+	cd upstream_pkgs/$(PKG) && make
+clean_upstream_pkg:
+	cd upstream_pkgs/$(PKG) && make clean
 distclean_upstream_pkg:
 	sudo rm -rf upstream_pkgs/$(PKG)
 newpackage:
