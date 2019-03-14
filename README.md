@@ -148,9 +148,9 @@ make upstream_pkg PKG=linux-source-4.15.0
 
 Porting of functional Starling X patches located at:
 
-[0001-StarlingX-Death-of-Arbitrary-Process-Notification.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0001-StarlingX-Death-of-Arbitrary-Process-Notification.patch)
-[0002-StarlingX-Kernel-Threads-Compute-CPU-Affinity.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0002-StarlingX-Kernel-Threads-Compute-CPU-Affinity.patch)
-[0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch)
+* [0001-StarlingX-Death-of-Arbitrary-Process-Notification.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0001-StarlingX-Death-of-Arbitrary-Process-Notification.patch)
+* [0002-StarlingX-Kernel-Threads-Compute-CPU-Affinity.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0002-StarlingX-Kernel-Threads-Compute-CPU-Affinity.patch)
+* [0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0003-StarlingX-Kernel-Threads-Workqueues-IRQs.patch)
 [0004-StarlingX-Kernel-Threads-iSCSI.patch](https://raw.githubusercontent.com/tajtli/lts/master/starlingx/v4.18/0004-StarlingX-Kernel-Threads-iSCSI.patch)
 
 ## Building and image (WIP as POC state now)
