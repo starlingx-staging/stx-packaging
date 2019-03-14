@@ -1,9 +1,9 @@
-# Starling X multi os packaging
+# Starling X multi-os packaging
 
-This project builds the necesary packages and the Linux ISO to host the
+This project builds the necessary packages and the Linux ISO to host the
 [Containerizing StarlingX
 Infrastructure](https://wiki.openstack.org/wiki/Containerizing_StarlingX_Infrastructure)
-As a POC this project works now for Ubunut 16 or latest as development machine
+As a POC this project works now for Ubuntu 16 or latest as the development machine
 to generate an Ubuntu 16 image with the Starling X Infrastructure
 
 ## Getting Started
@@ -14,7 +14,7 @@ local machine for development and testing purposes.
 ### Prerequisites
 
 The development tools and git repositories that you need are installed by
-runing setup.sh
+running setup.sh
 
 ```
 bash setup.sh
@@ -23,13 +23,13 @@ bash setup.sh
 ## Building
 
 Here are some step by step series of examples that tell you how to get a
-development env running acording to different scenarios:
+development env running according to different scenarios:
 
 ### Building a package provided by Starling X ( Flock service )
 
 #### Set up git repository that host the source and build scripts
 
-After executing setup.sh the repositories that we specifies on the repo file are downloaded , ie:
+After executing setup.sh the repositories that we specify on the repo file are downloaded, ie:
 
 ```
 $ cat repos
@@ -44,8 +44,8 @@ This is a csv file with these fields:
 
 This gives the freedom to developers to host their own forks of Starling X git
 repositories repos to work. This gives flexibility for developers in the
-meantime that the gerrir review is approved. Originally the repos file should
-point to the oficial starling x gerrit repositories.
+meantime that the Gerrit review is approved. Originally the repos file should
+point to the official starling x Gerrit repositories.
 
 ```
 $ cat repos
@@ -62,7 +62,7 @@ make package PKG=x.stx-fault/fm-common DISTRO=ubuntu
 ```
 
 	* PKG=path to the directory where our fm-common project lives
-	* DISTRO= ubuntu | centos | suse ( for now only works for ubuntu )
+	* DISTRO= ubuntu | centos | suse ( for now only works for Ubuntu )
 
 Another example could be fm-mgr:
 
@@ -71,8 +71,8 @@ make package PKG=x.stx-fault/fm-mgr DISTRO=ubuntu
 ```
 
 One difference here is that fm-mgr depends on build time of fm-common that we
-previusly build, How to add a local build dependency to our build system in
-chroot , in this case is as simple as eddit the file:
+previously build, How to add a local build dependency to our build system in
+chroot, in this case is as simple as edit the file:
 
 ```
 $ cat x.stx-fault/fm-mgr/ubuntu/build_deps
@@ -83,7 +83,7 @@ The Makefile located in : x.stx-fault/fm-mgr/ubuntu/Makefile will build first
 fm-common in case we forgot to build it
 
 After that it will copy the .deb generated into /usr/local/mydebs/ that is our
-local mirror / mount point for pbuilder tool to search local build dependencies
+local mirror/mount point for pbuilder tool to search local build dependencies
 
 ### Building a package tunned by Starling X ( Horizon for example )
 
@@ -104,7 +104,7 @@ Makefile
 ```
 
 We could even move to this directory and type make or from our root repo
-directory build as ussual:
+directory build as usual:
 
 ```
 make package PKG=x.stx-upstream/openstack/python-horizon/ DISTRO=ubuntu
@@ -134,7 +134,7 @@ Clean (but not erase your patches) with:
 make clean_upstream_pkg PKG=bc
 ```
 
-Distclean completely with:
+distclean completely with:
 
 ```
 make distclean_upstream_pkg PKG=bc
@@ -160,17 +160,16 @@ stx-packaging/upstream_pkgs/linux-source-4.15.0/linux-4.15.0/debian/patches
 ```
 And put a series file that indicates the order of applying
 
-## Building and image (WIP as POC state now)
+## Building an image (WIP as POC state now)
 
-For now we are using
+For now, we are using
 [linuxbuilder](https://github.com/VictorRodriguez/linuxbuilder) script to test
 our package created on an upstream ubuntu image. However it has a lot of
 limitations and we are on the transition to [live
 build](http://complete.sisudoc.org/manual/html/live-manual/installation.ro.html#installing-live-build)
 tool.
 
-In the meantime to test that your DEB file coudl be installed on an Ubuntu
-image you can follow the next steps:
+In the meantime to test that your DEB file could be installed on an Ubuntu image you can follow the next steps:
 
 Check that only one DEB that does not require runtime dependencies  exist on
 local DEBs mirror:
@@ -178,8 +177,8 @@ local DEBs mirror:
 /usr/local/mydebs/
 ```
 
-Then we can download the Ubuntu image we will use as template
-(for now linuxbuilder only works with this version of ubuntu, since is a POC):
+Then we can download the Ubuntu image we will use as a template
+(for now, linuxbuilder only works with this version of ubuntu, since is a POC):
 ```
 wget http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso
 ```
@@ -213,7 +212,7 @@ Launch the generated StarlingX based Ubuntu image, select the following options:
 user@workstation:~/starlingx/stx-packaging$ qemu-system-x86_64 -enable-kvm -machine accel=kvm -hda disk.img -boot d -cdrom ubuntu.iso -m 22640
 ```
 
-Once StarlingX based Ubuntu image has been installed, remove the ISO file and launch again the virtual machine:
+Once Starling X based Ubuntu image has been installed, remove the ISO file and launch again the virtual machine:
 
 ```
 user@workstation:~/starlingx/stx-packaging$ qemu-system-x86_64 -enable-kvm -machine accel=kvm -hda disk.img -m 22640
@@ -224,7 +223,7 @@ An example of the image booting with our kernel prevusly build:
 ![POC of Ubuntu + Kernel 4.18 + some STX kernel patches](https://farm8.staticflickr.com/7900/40415829643_082571cebf_o.png "Ubuntu image with STX kernel 4.18")
 
 
-## Sanity Testscases
+## Sanity Test cases
 
 This repo has its own sanity test to check that everything works:
 
@@ -263,4 +262,4 @@ This project is licensed under the Apache License - see the [LICENSE.md](LICENSE
 
 ## Acknowledgments
 
-STX community for great feedback during the conseption of this POC
+STX community for great feedback during the conception of this POC
