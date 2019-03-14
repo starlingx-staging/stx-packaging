@@ -219,6 +219,11 @@ Once StarlingX based Ubuntu image has been installed, remove the ISO file and la
 user@workstation:~/starlingx/stx-packaging$ qemu-system-x86_64 -enable-kvm -machine accel=kvm -hda disk.img -m 22640
 ```
 
+An example of the image booting with our kernel prevusly build: 
+
+![POC of Ubuntu + Kernel 4.18 + some STX kernel patches](https://farm8.staticflickr.com/7900/40415829643_082571cebf_o.png "Ubuntu image with STX kernel 4.18")
+
+
 ## Sanity Testscases
 
 This repo has its own sanity test to check that everything works:
