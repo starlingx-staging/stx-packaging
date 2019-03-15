@@ -235,6 +235,13 @@ make testbuild
 
 [![Audi R8](http://img.youtube.com/vi/YMEOxj8WnKY/0.jpg)](https://www.youtube.com/watch?v=YMEOxj8WnKY "Audi R8")
 
+More video tutoriuals at:
+
+*  [STX multi OS - build fm-mgr in Ubuntu](https://www.youtube.com/watch?v=CQLG5Z10opI&)
+*  [STX multi OS - build Horizon in Ubuntu](https://www.youtube.com/watch?v=TI45Po_i8iM)
+*  [STX multi OS - build BC in Ubuntu](https://www.youtube.com/watch?v=JbOEj3j5cuw)
+
+
 
 ## Architecture
 
