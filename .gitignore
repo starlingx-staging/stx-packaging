@@ -1,0 +1,8 @@
+autodeb/
+linuxbuilder/
+*.tar.gz
+*.tar.xz
+*.dsc
+*.deb
+*.changes
+*.iso

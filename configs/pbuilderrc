@@ -1,0 +1,10 @@
+# Location of the dir where you keep pbuilder hook scripts.
+HOOKDIR="/var/cache/pbuilder/hook.d"
+
+# Path to your local repo to be used as a mirror written as apt source line.
+OTHERMIRROR="deb [trusted=yes] file:///usr/local/mydebs/ ./"
+
+# Path to your local repo. This tells pbuilder to mount this directory so it is
+# available in the chroot.
+BINDMOUNTS="/usr/local/mydebs/"
+
