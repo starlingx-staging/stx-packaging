@@ -150,6 +150,9 @@ Another example more useful than bc calculator is:
 ```
 make upstream_pkg PKG=linux-source-4.15.0
 ```
+```
+make upstream_pkg PKG=keystone
+```
 
 Porting of functional Starling X patches located at:
 
