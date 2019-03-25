@@ -20,6 +20,11 @@ running setup.sh
 bash setup.sh
 ```
 
+If you are under a proxy in order to make pbuilder make use of your apt-cache,
+you just need to set this
+
+export http_proxy=http://your-proxy:8080/ in ~/.pbuilderrc
+
 ## Building
 
 Here are some step by step series of examples that tell you how to get a
