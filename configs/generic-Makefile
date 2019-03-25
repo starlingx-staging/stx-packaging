@@ -1,6 +1,6 @@
 all:
 	sudo rm -rf /var/cache/pbuilder/result/*.deb
-	sudo pbuilder build --override-config *.dsc
+	sudo pbuilder build *.dsc
 	mkdir -p results/
 	sudo cp -rf /var/cache/pbuilder/result/*.deb results/
 	sudo cp results/*.deb /usr/local/mydebs/
