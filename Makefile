@@ -27,6 +27,8 @@ distclean_upstream_pkg:
 	sudo rm -rf upstream_pkgs/$(PKG)
 testbuild: package
 	@ if [ $$? -eq 0 ] ; then echo "Test Build: OK !"; fi
+update:
+	sudo pbuilder update --components "main universe" --override-config
 clean:
 	cd $(PKG)/$(DISTRO) && make clean
 	rm -rf ubuntu.iso
