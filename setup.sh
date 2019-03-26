@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 if ! type "debmake" > /dev/null; then
-    sudo apt-get install debmake
+    sudo apt-get install -y debmake
 fi
 
 if ! type "pbuilder" > /dev/null; then
-    sudo apt-get install pbuilder
+    sudo apt-get install -y pbuilder
 fi
 
 if [ ! -f /var/cache/pbuilder/base.tgz ] ; then
