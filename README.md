@@ -238,6 +238,29 @@ This repo has its own sanity test to check that everything works:
 ```
 make testbuild
 ```
+## Container for development
+
+Inside configs/docker-ubuntu-img there is a Dockerfile with a Makefile.
+
+To create a Docker image to develop:
+
+```
+	make
+
+	make run
+
+	root@e82355206aab:/# cd stx-packaging/ && ./setup.sh
+```
+
+This will create the chroot with all the build set up for pbuilder
+
+A sanity test is included as well:
+
+```
+	make test
+```
+
+This will run the container and execute ./setup.sh && build fm-common
 
 ## Video Tutorials
 
