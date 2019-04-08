@@ -90,6 +90,21 @@ fm-common in case we forgot to build it
 After that it will copy the .deb generated into /usr/local/mydebs/ that is our
 local mirror/mount point for pbuilder tool to search local build dependencies
 
+If you are not in a Linux machine but it has docker and Makefile tools, you
+still can build an STX DEB:
+
+``` make package PKG=x.stx-fault/fm-mgr DISTRO=ubuntu BUILD_W_CONT=y ```
+
+The flag ```BUILD_W_CONT=y``` will create a docker image with all the enviroment
+necesary to build the package and leave the results in:
+
+```
+stx-packaging $ ls configs/docker-ubuntu-img/results/
+Packages.gz			fm-common-dev_0.0-1_amd64.deb
+```
+As you can see you can also set there an specific Packages.gz that you prefer
+with fixed packages versions for your build
+
 ### Building a package tunned by Starling X ( Horizon for example )
 
 Following the same approach from the section "Set up git repository that host
