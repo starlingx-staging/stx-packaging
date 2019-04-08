@@ -34,6 +34,14 @@ else
     cd ..
 fi
 
+if [ ! -d "live_img" ]; then
+    git clone --depth=1 https://github.com/marcelarosalesj/live_img.git
+else
+    echo "Updating live_img"
+    cd live_img/ && git pull
+    cd ..
+fi
+
 # clone source code repos on specific branches
 filename='repos'
 while IFS=, read GIT_REPO BRANCH; do

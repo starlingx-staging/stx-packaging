@@ -11,6 +11,10 @@ iso:
 	cp -rf /usr/local/mydebs/*.deb linuxbuilder/DEBS/
 	cd linuxbuilder/ && make iso-ubuntu IMAGE=$(ISO_TEMPLATE)
 	mv linuxbuilder/ubuntu.iso .
+liveimg:
+	@ echo "Creating $(DISTRO) live image"
+	cp -rf /usr/local/mydebs/*.deb live_img/$(DISTRO)/stxdebs/
+	@ cd live_img/ && make DISTRO=$(DISTRO)
 package:
 	@echo "Building package $(PKG) for $(DISTRO)"
 	cd $(PKG)/$(DISTRO) && make
