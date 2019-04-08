@@ -33,13 +33,25 @@ else
 package:build_pkg_native
 endif
 
-upstream_pkg:
+build_upstream_pkg_native:
 	@echo "Building package $(PKG) for $(DISTRO)"
 	- mkdir -p upstream_pkgs/$(PKG)
 	- mkdir -p upstream_pkgs/$(PKG)/results
+	sudo apt-get update
 	cd upstream_pkgs/$(PKG) && sudo apt-get source $(PKG)
 	cp configs/generic-Makefile upstream_pkgs/$(PKG)/Makefile
 	cd upstream_pkgs/$(PKG) && make
+
+build_upstream_pkg_in_cont:
+	cd configs/docker-$(DISTRO)-img/ && make upstream_pkg PKG=$(PKG)
+
+upstream_pkg:
+ifeq ($(BUILD_W_CONT),y)
+upstream_pkg:build_cont_img build_upstream_pkg_in_cont
+else
+upstream_pkg:build_upstream_pkg_native
+endif
+
 clean_upstream_pkg:
 	cd upstream_pkgs/$(PKG) && make clean
 distclean_upstream_pkg:

@@ -8,6 +8,8 @@ test:
 	docker run -it --privileged -v $(PWD)/results:/usr/local/mydebs ubuntu-stx:v1 /bin/bash -c './setup.sh && make testbuild'
 package:
 	docker run -it --privileged -v $(PWD)/results:/usr/local/mydebs ubuntu-stx:v1 /bin/bash -c './setup.sh && make package PKG=$(PKG) DISTRO=ubuntu'
+upstream_pkg:
+	docker run -it --privileged -v $(PWD)/results:/usr/local/mydebs ubuntu-stx:v1 /bin/bash -c './setup.sh && make upstream_pkg PKG=$(PKG) DISTRO=ubuntu'
 distclean:
 	docker rmi -f ubuntu-stx:v1
 
