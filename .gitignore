@@ -1,5 +1,6 @@
 autodeb/
 linuxbuilder/
+configs/docker-ubuntu-img/results/
 *.tar.gz
 *.tar.xz
 *.dsc
