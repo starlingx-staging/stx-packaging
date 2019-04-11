@@ -12,6 +12,10 @@ if [ ! -f /var/cache/pbuilder/base.tgz ] ; then
     sudo pbuilder create
 fi
 
+if [ ! -d "/usr/lib/grub/i386-pc" ]; then
+    sudo apt-get install -y grub-pc
+fi
+
 sudo mkdir -p /usr/local/mydebs/
 sudo mkdir -p /var/cache/pbuilder/hook.d/
 
