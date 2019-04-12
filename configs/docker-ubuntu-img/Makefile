@@ -1,7 +1,7 @@
 PKG ?="x.stx-fault/fm-common"
 
 all:
-	docker build -t ubuntu-stx:v1 .
+	[ ! -z $(docker images -q ubuntu-stx:v1) ] || docker build -t ubuntu-stx:v1 .
 run:
 	docker run -it --privileged -v $(PWD)/results:/usr/local/mydebs ubuntu-stx:v1 /bin/bash
 test:
