@@ -4,6 +4,9 @@ DOCKER_BUILD_ARGS := --build-arg http_proxy --build-arg https_proxy --build-arg 
 		--build-arg HTTP_PROXY --build-arg HTTPS_PROXY --build-arg NO_PROXY
 
 DOCKER_RUN_ARGS := --privileged -v $(PWD)/results:/usr/local/mydebs
+ifeq ($(filter-out Linux, $(shell uname)),)
+DOCKER_RUN_ARGS += -v $(PWD)/pbuilder:/var/cache/pbuilder
+endif
 DOCKER_RUN_ARGS += --rm
 DOCKER_RUN_ARGS += --env http_proxy --env https_proxy --env no_proxy \
 		--env HTTP_PROXY --env HTTPS_PROXY --env NO_PROXY
