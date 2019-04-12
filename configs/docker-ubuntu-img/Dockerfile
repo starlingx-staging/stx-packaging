@@ -5,6 +5,12 @@ RUN apt-get update && apt-get install -y \
 	vim \
 	debmake \
 	pbuilder
+
+RUN cd /tmp \
+	&& apt-get download grub-pc grub-pc-bin \
+	&& find -name "*.deb"  -exec dpkg -x {} / \; \
+	&& rm -f *.deb
+
 # cp due to https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=858614
 COPY ./para.py /usr/lib/python3/dist-packages/debmake/para.py
 RUN git clone https://github.com/starlingx-staging/stx-packaging.git
