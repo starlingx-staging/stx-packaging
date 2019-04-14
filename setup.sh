@@ -8,6 +8,10 @@ if ! type "pbuilder" > /dev/null; then
     sudo apt-get install -y pbuilder
 fi
 
+if ! type "dpkg-scanpackages" > /dev/null; then
+    sudo apt-get install -y dpkg-dev
+fi
+
 if [ ! -f /var/cache/pbuilder/base.tgz ] ; then
     sudo pbuilder create
 fi
