@@ -23,6 +23,7 @@ RUN install -g mock -m 2775 -d /rpmbuild/cache/mock
 RUN echo "config_opts['cache_topdir'] = '/rpmbuild/cache/mock'" >> /etc/mock/site-defaults.cfg
 
 ADD ./build-rpm.sh /build-rpm.sh
+ADD ./local-centos-7-x86_64.cfg /etc/mock/local-centos-7-x86_64.cfg
 RUN chmod +x /build-rpm.sh
 #RUN setcap cap_sys_admin+ep /usr/sbin/mock
 ADD ./rpm-sign.exp /rpm-sign.exp
