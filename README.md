@@ -13,11 +13,25 @@ local machine for development and testing purposes.
 
 ### Prerequisites
 
+To clone this repository the [repo tool](https://source.android.com/setup/develop/repo) is needed. You can install it by running:
+
+```
+curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo && \
+    chmod a+x /usr/local/bin/repo
+```
+
+Then just run:
+
+```
+repo init -u https://github.com/starlingx-staging/stx-packaging -m default.xml
+repo sync -j4
+```
+
 The development tools and git repositories that you need are installed by
 running setup.sh
 
 ```
-bash setup.sh
+./setup.sh
 ```
 
 If you are under a proxy in order to make pbuilder make use of your apt-cache,
