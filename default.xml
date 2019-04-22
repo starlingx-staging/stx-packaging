@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<remote name="stx-staging" fetch="https://github.com/starlingx-staging"/>
+	<remote name="github" fetch="https://github.com/"/>
+
+	<default revision="master" remote="stx-staging"/>
+
+	<project remote="stx-staging" name="stx-packaging.git" path="stx-packaging" />
+
+	<!-- Dependency repositories -->
+	<project remote="github" name="VictorRodriguez/autodeb.git"
+		 path="stx-packaging/autodeb" />
+	<project remote="github" name="VictorRodriguez/linuxbuilder.git"
+		 path="stx-packaging/linuxbuilder" />
+	<project remote="github" name="marcelarosalesj/live_img.git"
+		 path="stx-packaging/live_img" />
+
+	<!-- Source code repositories -->
+	<project remote="github" name="VictorRodriguez/x.stx-upstream.git"
+		 path="stx-packaging/x.stx-upstream" revision="master"/>
+	<project remote="github" name="marcelarosalesj/x.stx-fault.git"
+		 path="stx-packaging/x.stx-fault" revision="ubuntu" />
+	<project remote="github" name="marcelarosalesj/x.stx-config.git"
+		 path="stx-packaging/x.stx-config" revision="ubuntu" />
+	<project remote="github" name="MarioCarrilloA/x.stx-update.git"
+		 path="stx-packaging/x.stx-update" revision="ubuntu" />
+</manifest>
+
