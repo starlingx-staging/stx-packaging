@@ -277,6 +277,17 @@ A sanity test is included as well:
 
 This will run the container and execute ./setup.sh && build fm-common
 
+## Known issues
+
+* unknown python version. check setup.py
+
+This is a common error when the setup.py of your source code does not include
+any shebang line. The root cause of this bug release on the debmake file
+[analyze.py](https://salsa.debian.org/debian/debmake/blob/devel/debmake/analyze.py#L302)
+
+A valid workaround is to set a proper shebang into the setup.py of your source
+file in the meantime that we work on a proper patch with debmake maintainer
+
 ## Video Tutorials
 
 [![Audi R8](http://img.youtube.com/vi/YMEOxj8WnKY/0.jpg)](https://www.youtube.com/watch?v=YMEOxj8WnKY "Audi R8")
