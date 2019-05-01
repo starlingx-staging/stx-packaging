@@ -2,7 +2,7 @@
 HOOKDIR="/var/cache/pbuilder/hook.d"
 
 # Path to your local repo to be used as a mirror written as apt source line.
-OTHERMIRROR="deb [trusted=yes] file:///usr/local/mydebs/ ./"
+OTHERMIRROR="deb [trusted=yes] file:///usr/local/mydebs/ ./|deb [trusted=yes] http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse|deb [trusted=yes] http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens main"
 
 # Path to your local repo. This tells pbuilder to mount this directory so it is
 # available in the chroot.
