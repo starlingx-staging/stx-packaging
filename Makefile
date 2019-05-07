@@ -24,7 +24,12 @@ build_pkg_in_cont:
 build_pkg_native:
 	@echo "Compiing w/o contianers in a native $(DISTRO) system"
 	@echo "Building package $(PKG) for $(DISTRO)"
+ifeq ($(DISTRO),ubuntu)
 	cd $(PKG)/$(DISTRO) && make
+else
+	cp configs/rpm-Makefile $(PKG)/$(DISTRO)/Makefile
+	cd $(PKG)/$(DISTRO)/ && make MOCK_CONFIG=../../../configs/docker-centos-img/local-centos-7-x86_64.cfg
+endif
 
 package:
 ifeq ($(BUILD_W_CONT),y)
