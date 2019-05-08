@@ -1,21 +1,24 @@
 VERSION := $(shell cat *.spec | grep Version | cut -d':' -f2| tr -d '[:space:]')
 NAME := $(shell cat *.spec | grep Name | cut -d':' -f2)
 TIS_PATCH_VER := $(strip $(shell cat build_srpm.data | grep TIS_PATCH_VER | cut -d'=' -f2))
+SRC_DIR := $(strip $(shell cat build_srpm.data | grep SRC_DIR | cut -d'=' -f2))
 MOCK_CONFIG := /etc/mock/local-centos-7-x86_64.cfg
 SPEC := $(shell find -name *.spec)
-SOURCES := $(shell find -name *.tar.gz)
 RES_DIR := /tmp/
 SRPM := $(strip $(RES_DIR))$(strip $(NAME))-$(VERSION)-$(TIS_PATCH_VER).src.rpm
 
 all: tar srpm
-	mock -r $(MOCK_CONFIG) --rebuild  $(SRPM) --resultdir $(RES_DIR) --define="tis_patch_ver $(TIS_PATCH_VER)"
-tar:
-	@echo "creating tar ball"
 	@echo PKG_NAME = $(NAME)
 	@echo VERSION = $(VERSION)
 	@echo TIS_PATCH_VER = $(TIS_PATCH_VER)
-	cp  -rf ../sources/  $(NAME)-$(VERSION)/
+	@echo SRC_DIR = $(SRC_DIR)
+	@echo SOURCES = $(SOURCES)
+	mock -r $(MOCK_CONFIG) --rebuild  $(SRPM) --resultdir $(RES_DIR) --define="tis_patch_ver $(TIS_PATCH_VER)"
+tar:
+	@echo "creating tar ball"
+	cp  -rf ../$(SRC_DIR)  $(NAME)-$(VERSION)/
 	tar -zcf $(NAME)-$(VERSION).tar.gz $(NAME)-$(VERSION)
+	$(eval SOURCES := $(shell find -name *.tar.gz))
 	rm -rf $(NAME)-$(VERSION)/
 srpm:
 	mock -r $(MOCK_CONFIG) --buildsrpm --spec=$(SPEC) --sources=$(SOURCES) --resultdir $(RES_DIR) --define="tis_patch_ver $(TIS_PATCH_VER)"
