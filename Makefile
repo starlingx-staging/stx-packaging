@@ -1,5 +1,5 @@
 PKG ?= "x.stx-fault/fm-common"
-DISTRO ?= "debian"
+DISTRO ?= debian
 ISO_TEMPLATE ?= ""
 BUILD_W_CONT ?= "n"
 
@@ -26,9 +26,11 @@ build_pkg_native:
 	@echo "Building package $(PKG) for $(DISTRO)"
 ifeq ($(DISTRO),debian)
 	cd $(PKG)/$(DISTRO) && make
-else
+else ifeq ($(DISTRO),centos)
 	cp configs/rpm-Makefile $(PKG)/$(DISTRO)/Makefile
 	cd $(PKG)/$(DISTRO)/ && make MOCK_CONFIG=../../../configs/docker-centos-img/local-centos-7-x86_64.cfg
+else
+	@echo "Distro not supported"
 endif
 
 package:
