@@ -65,6 +65,8 @@ distclean_upstream_pkg:
 	sudo rm -rf upstream_pkgs/$(PKG)
 testbuild: package
 	@ if [ $$? -eq 0 ] ; then echo "Test Build: OK !"; fi
+fulltest:
+	cd tests && pytest test_build.py
 update:
 	sudo pbuilder update --components "main universe" --override-config
 clean:
