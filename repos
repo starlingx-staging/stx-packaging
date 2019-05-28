@@ -1,4 +1,4 @@
 https://github.com/VictorRodriguez/x.stx-upstream.git,master
-https://github.com/marcelarosalesj/x.stx-fault.git,ubuntu
-https://github.com/marcelarosalesj/x.stx-config.git,ubuntu
-https://github.com/MarioCarrilloA/x.stx-update.git,ubuntu
+https://github.com/marcelarosalesj/x.stx-fault.git,debian
+https://github.com/marcelarosalesj/x.stx-config.git,debian
+https://github.com/MarioCarrilloA/x.stx-update.git,debian

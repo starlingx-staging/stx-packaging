@@ -1,5 +1,5 @@
 PKG ?= "x.stx-fault/fm-common"
-DISTRO ?= "ubuntu"
+DISTRO ?= "debian"
 ISO_TEMPLATE ?= ""
 BUILD_W_CONT ?= "n"
 
@@ -10,8 +10,8 @@ iso:
 	@ echo "Creating image .iso to boot and test"
 	cp $(ISO_TEMPLATE) linuxbuilder/
 	cp -rf /usr/local/mydebs/*.deb linuxbuilder/DEBS/
-	cd linuxbuilder/ && make iso-ubuntu IMAGE=$(ISO_TEMPLATE)
-	mv linuxbuilder/ubuntu.iso .
+	cd linuxbuilder/ && make iso-debian IMAGE=$(ISO_TEMPLATE)
+	mv linuxbuilder/debian.iso .
 liveimg:
 	@ echo "Creating $(DISTRO) live image"
 	cp -rf /usr/local/mydebs/*.deb live_img/$(DISTRO)/stxdebs/
@@ -24,7 +24,7 @@ build_pkg_in_cont:
 build_pkg_native:
 	@echo "Compiing w/o contianers in a native $(DISTRO) system"
 	@echo "Building package $(PKG) for $(DISTRO)"
-ifeq ($(DISTRO),ubuntu)
+ifeq ($(DISTRO),debian)
 	cd $(PKG)/$(DISTRO) && make
 else
 	cp configs/rpm-Makefile $(PKG)/$(DISTRO)/Makefile
@@ -67,4 +67,4 @@ update:
 	sudo pbuilder update --components "main universe" --override-config
 clean:
 	cd $(PKG)/$(DISTRO) && make clean
-	rm -rf ubuntu.iso
+	rm -rf debian.iso
