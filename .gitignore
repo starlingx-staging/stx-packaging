@@ -1,9 +1,10 @@
 autodeb/
 linuxbuilder/
-configs/docker-ubuntu-img/results/
+configs/docker-debian-img/results/
 *.tar.gz
 *.tar.xz
 *.dsc
 *.deb
 *.changes
 *.iso
+*.pyc
