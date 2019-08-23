@@ -1,7 +1,10 @@
-PKG ?= "x.stx-fault/fm-common"
+PKG ?= "fault/fm-common"
 DISTRO ?= debian
 ISO_TEMPLATE ?= ""
 BUILD_W_CONT ?= "n"
+NAME ?="fm-common"
+DEBMAKE ?="python"
+SRC_PATH ?="../sources"
 
 
 all:
@@ -25,7 +28,10 @@ build_pkg_native:
 	@echo "Compiing w/o contianers in a native $(DISTRO) system"
 	@echo "Building package $(PKG) for $(DISTRO)"
 ifeq ($(DISTRO),debian)
-	cd $(PKG)/$(DISTRO) && make
+	@if [ ! -f $(PKG)/$(DISTRO)/Makefile ];\
+		then cp configs/debian-flock-Makefile $(PKG)/$(DISTRO)/Makefile;\
+		else echo "Makefile found"; fi
+	cd $(PKG)/$(DISTRO) && make NAME=$(NAME) DEBMAKE=$(DEBMAKE) SRC_PATH=$(SRC_PATH)
 else ifeq ($(DISTRO),centos)
 	cp configs/rpm-Makefile $(PKG)/$(DISTRO)/Makefile
 	cd $(PKG)/$(DISTRO)/ && make MOCK_CONFIG=../../../configs/docker-centos-img/local-centos-7-x86_64.cfg

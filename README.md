@@ -65,7 +65,7 @@ Once we have clone the proper repository where the flock service is hosted, we
 can build as:
 
 ```
-make package PKG=x.stx-fault/fm-common DISTRO=debian
+make package PKG=fault/fm-common DISTRO=debian
 ```
 
 	* PKG=path to the directory where our fm-common project lives
